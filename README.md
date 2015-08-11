@@ -22,7 +22,7 @@ To build
 
 ###Running adam-commands using ```adam-submit```
 
-Apply this patch to [bigdatagenomics/adam](https://github.com/bigdatagenomics/adam) allow main class to be overridden
+Apply this patch to [bigdatagenomics/adam](https://github.com/bigdatagenomics/adam) to allow main class to be overridden
 
     $ git diff .
     diff --git a/bin/adam-submit b/bin/adam-submit
@@ -63,7 +63,7 @@ Specify ```ADAM_MAIN```; external commands are listed in the usage text
     
     Using ADAM_MAIN=com.github.heuermh.adam.commands.ADAMCommandsMain
     Using SPARK_SUBMIT=/usr/local/bin/spark-submit
-    INFO ADAMMain: ADAM invoked with args: 
+    INFO ADAMMain: ADAM invoked with args:
     
     
          e            888~-_              e                 e    e
