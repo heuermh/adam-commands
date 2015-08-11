@@ -54,7 +54,7 @@ Apply this patch to [bigdatagenomics/adam](https://github.com/bigdatagenomics/ad
          $SPARK_ARGS \
 
 
-Specify ```ADAM_MAIN```; external commands are listed in the usage text
+Specify ```ADAM_MAIN``` and add the adam-commands jar to the classpath using ```--jars```; external commands are listed in the usage text
 
     $ ADAM_MAIN=com.github.heuermh.adam.commands.ADAMCommandsMain \
       ../adam/bin/adam-submit \
