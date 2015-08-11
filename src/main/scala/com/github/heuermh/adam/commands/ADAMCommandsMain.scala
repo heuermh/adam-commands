@@ -24,6 +24,6 @@ import org.bdgenomics.adam.cli.ADAMMain.defaultCommandGroups
  * @author  Michael Heuer
  */
 object ADAMCommandsMain extends App {
-  val commandGroup = List(CommandGroup("External commands", List(CountAlignments, CountAlignmentsPerRead)))
+  val commandGroup = List(CommandGroup("EXTERNAL COMMANDS", List(CountAlignments, CountAlignmentsPerRead)))
   new ADAMMain(defaultCommandGroups.union(commandGroup)).apply(args)
 }
