@@ -8,7 +8,7 @@
   </parent>
   <groupId>com.github.heuermh.adamcommands</groupId>
   <artifactId>adam-commands_2.10</artifactId>
-  <version>0.17.1-SNAPSHOT</version>
+  <version>0.17.2-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>adam-commands_2.10</name>
@@ -35,7 +35,7 @@
     </developer>
   </developers>
   <properties>
-    <adam.version>0.17.1-SNAPSHOT</adam.version>
+    <adam.version>0.17.2-SNAPSHOT</adam.version>
     <scala.version>2.10.4</scala.version>
     <scala.artifact.suffix>2.10</scala.artifact.suffix>
     <spark.version>1.2.0</spark.version>
