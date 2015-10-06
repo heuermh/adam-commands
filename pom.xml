@@ -251,6 +251,11 @@
   <dependencyManagement>
     <dependencies>
       <dependency>
+        <groupId>net.codingwell</groupId>
+        <artifactId>scala-guice_2.10</artifactId>
+        <version>4.0.0</version>
+      </dependency>
+      <dependency>
         <groupId>org.apache.spark</groupId>
         <artifactId>spark-core_${scala.artifact.suffix}</artifactId>
         <version>${spark.version}</version>
@@ -294,6 +299,11 @@
     </dependencies>
   </dependencyManagement>
   <dependencies>
+    <dependency>
+      <groupId>net.codingwell</groupId>
+      <artifactId>scala-guice_2.10</artifactId>
+      <scope>compile</scope>
+    </dependency>
     <dependency>
       <groupId>org.apache.spark</groupId>
       <artifactId>spark-core_${scala.artifact.suffix}</artifactId>
