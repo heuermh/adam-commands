@@ -11,7 +11,7 @@ Install
  * JDK 1.7 or later, http://openjdk.java.net
  * Scala 2.10.4 or later, http://www.scala-lang.org
  * Apache Maven 3.2.5 or later, http://maven.apache.org
- * Apache Spark 1.2.0 or later, http://spark.apache.org
+ * Apache Spark 1.4.1 or later, http://spark.apache.org
  * ADAM: Genomic Data System 0.17.2-SNAPSHOT or later, https://github.com/bigdatagenomics/adam
 
 
@@ -22,7 +22,7 @@ To build
 
 ###Running adam-commands using ```adam-submit```
 
-Apply this patch to [bigdatagenomics/adam](https://github.com/bigdatagenomics/adam) to allow main class to be overridden
+Apply this patch to [bigdatagenomics/adam](https://github.com/bigdatagenomics/adam) to allow main class to be overridden (see also pull request https://github.com/bigdatagenomics/adam/pull/854)
 
     $ git diff .
     diff --git a/bin/adam-submit b/bin/adam-submit
@@ -36,7 +36,6 @@ Apply this patch to [bigdatagenomics/adam](https://github.com/bigdatagenomics/ad
     +# Allow main class to be overridden
     +if [ -z "$ADAM_MAIN" ]; then
     +  ADAM_MAIN="org.bdgenomics.adam.cli.ADAMMain"
-    +  exit 1
     +fi
     +echo "Using ADAM_MAIN=$ADAM_MAIN"
     +
