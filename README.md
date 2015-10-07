@@ -22,14 +22,13 @@ To build
 
 ###Running adam-commands using ```adam-submit```
 
+    $ cp target/adam-commands_2.10-0.17.2-SNAPSHOT.jar $ADAM_DIR
+    $ cd $ADAM_DIR
+
 To run the external commands in this repository via the ADAM command line, specify ```ADAM_MAIN``` and add the adam-commands jar
 to the classpath with the Spark ```--jars``` argument.
 
 Note the ```--``` argument separator between Spark arguments and ADAM arguments.
-
-    $ cp target/adam-commands_2.10-0.17.2-SNAPSHOT.jar $ADAM_DIR
-    $ cd $ADAM_DIR
-
 
 External commands are now listed in the usage text.
 
