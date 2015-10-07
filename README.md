@@ -22,11 +22,18 @@ To build
 
 ###Running adam-commands using ```adam-submit```
 
-Specify ```ADAM_MAIN``` and add the adam-commands jar to the classpath using ```--jars```; external commands are listed in the usage text
+To run the external commands in this repository via the ADAM command line, specify ```ADAM_MAIN``` and add the adam-commands jar
+to the classpath with the Spark ```--jars``` argument.  Note the ```--``` argument separator between Spark arguments and ADAM arguments.
+
+    $ cp target/adam-commands_2.10-0.17.2-SNAPSHOT.jar $ADAM_DIR
+    $ cd $ADAM_DIR
+
+
+External commands are now listed in the usage text.
 
     $ ADAM_MAIN=com.github.heuermh.adam.commands.ADAMCommandsMain \
-      ../adam/bin/adam-submit \
-      --jars target/adam-commands_2.10-0.17.2-SNAPSHOT.jar \
+      ./bin/adam-submit \
+      --jars adam-commands_2.10-0.17.2-SNAPSHOT.jar \
       --
     
     Using ADAM_MAIN=com.github.heuermh.adam.commands.ADAMCommandsMain
@@ -80,27 +87,27 @@ Specify ```ADAM_MAIN``` and add the adam-commands jar to the classpath using ```
 Run external commands
 
     $ ADAM_MAIN=com.github.heuermh.adam.commands.ADAMCommandsMain \
-      ../adam/bin/adam-submit \
-      --jars target/adam-commands_2.10-0.17.2-SNAPSHOT.jar \
+      ./bin/adam-submit \
+      --jars adam-commands_2.10-0.17.2-SNAPSHOT.jar \
       -- \
-      count_alignments ../adam/adam-core/src/test/resources/small.sam
+      count_alignments adam-core/src/test/resources/small.sam
     
     Using ADAM_MAIN=com.github.heuermh.adam.commands.ADAMCommandsMain
     Using SPARK_SUBMIT=/usr/local/bin/spark-submit
-    INFO ADAMMain: ADAM invoked with args: "count_alignments" "../adam/adam-core/src/test/resources/small.sam"
+    INFO ADAMMain: ADAM invoked with args: "count_alignments" "adam-core/src/test/resources/small.sam"
     ...
     (1,20)
 
 
     $ ADAM_MAIN=com.github.heuermh.adam.commands.ADAMCommandsMain \
-      ../adam/bin/adam-submit \
-      --jars target/adam-commands_2.10-0.17.2-SNAPSHOT.jar \
+      ./bin/adam-submit \
+      --jars adam-commands_2.10-0.17.2-SNAPSHOT.jar \
       -- \
-      count_alignments_per_read ../adam/adam-core/src/test/resources/small.sam
+      count_alignments_per_read adam-core/src/test/resources/small.sam
     
     Using ADAM_MAIN=com.github.heuermh.adam.commands.ADAMCommandsMain
     Using SPARK_SUBMIT=/usr/local/bin/spark-submit
-    INFO ADAMMain: ADAM invoked with args: "count_alignments_per_read" "../adam/adam-core/src/test/resources/small.sam"
+    INFO ADAMMain: ADAM invoked with args: "count_alignments_per_read" "adam-core/src/test/resources/small.sam"
     ...
     (simread:1:237728409:true,1)
     (simread:1:195211965:false,1)
