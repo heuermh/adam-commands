@@ -15,17 +15,26 @@
   */
 package com.github.heuermh.adam.commands
 
+import com.google.inject.{ AbstractModule, Guice, Injector }
+import net.codingwell.scalaguice.ScalaModule
+import net.codingwell.scalaguice.InjectorExtensions._
 import org.bdgenomics.adam.cli.{ ADAMMain, CommandGroup }
 import org.bdgenomics.adam.cli.ADAMMain.defaultCommandGroups
 
 /**
- * Add external commands to ADAM command line interface.
+ * Add external commands to ADAM command line interface via Guice injection.
  * 
  * @author  Michael Heuer
  */
-object ADAMCommandsMain {
+object ADAMCommandsGuiceMain {
   def main(args: Array[String]) {
-    val commandGroup = List(CommandGroup("EXTERNAL COMMANDS", List(CountAlignments, CountAlignmentsPerRead)))
-    new ADAMMain(defaultCommandGroups.union(commandGroup))(args)
+    val module = new AbstractModule with ScalaModule {
+      def configure() = {
+        bind[List[CommandGroup]].toInstance(defaultCommandGroups.union(List(CommandGroup("EXTERNAL COMMANDS", List(CountAlignments, CountAlignmentsPerRead)))))
+      }
+    }
+    val injector = Guice.createInjector(module)
+    val commandGroups = injector.instance[List[CommandGroup]]
+    new ADAMMain(commandGroups)(args)
   }
 }

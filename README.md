@@ -22,42 +22,12 @@ To build
 
 ###Running adam-commands using ```adam-submit```
 
-Apply this patch to [bigdatagenomics/adam](https://github.com/bigdatagenomics/adam) to allow main class to be overridden (see also pull request https://github.com/bigdatagenomics/adam/pull/854)
-
-    $ git diff .
-    diff --git a/bin/adam-submit b/bin/adam-submit
-    index 15ea9cd..b7047c7 100755
-    --- a/bin/adam-submit
-    +++ b/bin/adam-submit
-    @@ -78,6 +78,13 @@ CLI=$(ls "$ADAM_DIR" | grep cli)
-     CLI_DIR="${ADAM_DIR}/${CLI}"
-     ADAM_CLI_JAR=$(ls $CLI_DIR/*/adam-cli_2.1[01]-*.jar)
-    
-    +# Allow main class to be overridden
-    +if [ -z "$ADAM_MAIN" ]; then
-    +  ADAM_MAIN="org.bdgenomics.adam.cli.ADAMMain"
-    +fi
-    +echo "Using ADAM_MAIN=$ADAM_MAIN"
-    +
-     # Find spark-submit script
-     if [ -z "$SPARK_HOME" ]; then
-       SPARK_SUBMIT=$(which spark-submit)
-     @@ -92,7 +99,7 @@ echo "Using SPARK_SUBMIT=$SPARK_SUBMIT"
-    
-     # submit the job to Spark
-     "$SPARK_SUBMIT" \
-      -  --class org.bdgenomics.adam.cli.ADAMMain \
-      +  --class $ADAM_MAIN \
-         --conf spark.serializer=org.apache.spark.serializer.KryoSerializer \
-         --conf spark.kryo.registrator=org.bdgenomics.adam.serialization.ADAMKryoRegistrator \
-         $SPARK_ARGS \
-
-
 Specify ```ADAM_MAIN``` and add the adam-commands jar to the classpath using ```--jars```; external commands are listed in the usage text
 
     $ ADAM_MAIN=com.github.heuermh.adam.commands.ADAMCommandsMain \
       ../adam/bin/adam-submit \
-      --jars target/adam-commands_2.10-0.17.2-SNAPSHOT.jar
+      --jars target/adam-commands_2.10-0.17.2-SNAPSHOT.jar \
+      --
     
     Using ADAM_MAIN=com.github.heuermh.adam.commands.ADAMCommandsMain
     Using SPARK_SUBMIT=/usr/local/bin/spark-submit
