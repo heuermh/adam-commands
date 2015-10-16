@@ -36,8 +36,8 @@
   </developers>
   <properties>
     <adam.version>0.17.2-SNAPSHOT</adam.version>
-    <scala.version>2.10.4</scala.version>
-    <scala.artifact.suffix>2.10</scala.artifact.suffix>
+    <scala.version>2.11.4</scala.version>
+    <scala.artifact.suffix>2.11</scala.artifact.suffix>
     <spark.version>1.4.1</spark.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.build.targetEncoding>UTF-8</project.build.targetEncoding>
