@@ -7,11 +7,11 @@
     <version>9</version>
   </parent>
   <groupId>com.github.heuermh.adamcommands</groupId>
-  <artifactId>adam-commands_2.10</artifactId>
-  <version>0.18.1-SNAPSHOT</version>
+  <artifactId>adam-commands_2.11</artifactId>
+  <version>0.17.2-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>adam-commands_2.10</name>
+  <name>adam-commands_2.11</name>
   <description>External commands for ADAM: Genomic Data System.</description>
   <url>http://github.com/heuermh/adam-commands</url>
   <inceptionYear>2014</inceptionYear>
@@ -19,7 +19,6 @@
     <connection>scm:git:https://github.com/heuermh/adam-commands</connection>
     <developerConnection>scm:git:https://github.com/heuermh/adam-commands</developerConnection>
     <url>https://github.com/heuermh/adam-commands.git</url>
-    <tag>HEAD</tag>
   </scm>
   <licenses>
     <license>
@@ -252,7 +251,7 @@
     <dependencies>
       <dependency>
         <groupId>net.codingwell</groupId>
-        <artifactId>scala-guice_2.10</artifactId>
+        <artifactId>scala-guice_${scala.artifact.suffix}</artifactId>
         <version>4.0.0</version>
       </dependency>
       <dependency>
@@ -273,22 +272,22 @@
       <dependency>
         <groupId>org.bdgenomics.adam</groupId>
         <artifactId>adam-apis_${scala.artifact.suffix}</artifactId>
-        <version>0.18.1-SNAPSHOT</version>
+        <version>${adam.version}</version>
       </dependency>
       <dependency>
         <groupId>org.bdgenomics.adam</groupId>
         <artifactId>adam-cli_${scala.artifact.suffix}</artifactId>
-        <version>0.18.1-SNAPSHOT</version>
+        <version>${adam.version}</version>
       </dependency>
       <dependency>
         <groupId>org.bdgenomics.adam</groupId>
         <artifactId>adam-core_${scala.artifact.suffix}</artifactId>
-        <version>0.18.1-SNAPSHOT</version>
+        <version>${adam.version}</version>
       </dependency>
       <dependency>
         <groupId>org.bdgenomics.adam</groupId>
         <artifactId>adam-core_${scala.artifact.suffix}</artifactId>
-        <version>0.18.1-SNAPSHOT</version>
+        <version>${adam.version}</version>
         <type>test-jar</type>
       </dependency>
       <dependency>
@@ -301,7 +300,7 @@
   <dependencies>
     <dependency>
       <groupId>net.codingwell</groupId>
-      <artifactId>scala-guice_2.10</artifactId>
+      <artifactId>scala-guice_${scala.artifact.suffix}</artifactId>
       <scope>compile</scope>
     </dependency>
     <dependency>
