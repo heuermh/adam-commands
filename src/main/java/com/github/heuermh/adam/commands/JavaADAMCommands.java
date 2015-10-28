@@ -19,5 +19,5 @@ package com.github.heuermh.adam.commands;
  * External commands for ADAM: Genomic Data System.
  */
 public final class JavaADAMCommands {
-    // empty
+    // ...see https://github.com/bigdatagenomics/adam/issues/855
 }
