@@ -48,7 +48,7 @@ class CountAlignments(protected val args: CountAlignmentsArgs) extends BDGSparkC
   def run(sc: SparkContext) {
     var recs: RDD[AlignmentRecord] = sc.loadAlignments(args.inputPath)
 
-    recs.map(rec => if (rec.getReadMapped) rec.getContig.getContigName else "unmapped")
+    recs.map(rec => if (rec.getReadMapped) rec.getContigName else "unmapped")
       .map(contigName => (contigName, 1))
       .reduceByKey(_ + _)
       .foreach(println)
