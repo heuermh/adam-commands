@@ -15,12 +15,14 @@
   */
 package com.github.heuermh.adam.commands
 
-import org.apache.spark.{ SparkContext, Logging }
+import org.apache.spark.SparkContext
 import org.apache.spark.SparkContext._
 import org.apache.spark.rdd.RDD
 import org.bdgenomics.adam.rdd.ADAMContext._
+import org.bdgenomics.adam.rdd.read.AlignmentRecordRDD
 import org.bdgenomics.formats.avro.AlignmentRecord
 import org.bdgenomics.utils.cli._
+import org.bdgenomics.utils.misc.Logging
 import org.kohsuke.args4j.Argument
 
 object CountAlignmentsPerRead extends BDGCommandCompanion {
@@ -46,9 +48,10 @@ class CountAlignmentsPerRead(protected val args: CountAlignmentsPerReadArgs) ext
   val companion = CountAlignmentsPerRead
 
   def run(sc: SparkContext) {
-    var recs: RDD[AlignmentRecord] = sc.loadAlignments(args.inputPath)
+    var alignments: AlignmentRecordRDD = sc.loadAlignments(args.inputPath)
+    var rdd: RDD[AlignmentRecord] = alignments.rdd
 
-    recs.map(rec => if (rec.getReadMapped) rec.getReadName else "unmapped")
+    rdd.map(rec => if (rec.getReadMapped) rec.getReadName else "unmapped")
       .map(readName => (readName, 1))
       .reduceByKey(_ + _)
       .foreach(println)
