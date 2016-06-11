@@ -8,11 +8,11 @@ External commands in Java and Scala for ADAM: Genomic Data System.  Apache 2 lic
 
 Install
 
- * JDK 1.7 or later, http://openjdk.java.net
- * Scala 2.10.4 or later, http://www.scala-lang.org
+ * JDK 1.8 or later, http://openjdk.java.net
+ * Scala 2.10.5 or later, http://www.scala-lang.org
  * Apache Maven 3.2.5 or later, http://maven.apache.org
- * Apache Spark 1.5.2 or later, http://spark.apache.org
- * ADAM: Genomic Data System 0.19.0 or later, https://github.com/bigdatagenomics/adam
+ * Apache Spark 1.6.1 or later, http://spark.apache.org
+ * ADAM: Genomic Data System 0.19.1-SNAPSHOT or later, https://github.com/bigdatagenomics/adam
 
 
 To build
@@ -41,44 +41,45 @@ External commands are now listed in the usage text.
     Using SPARK_SUBMIT=/usr/local/bin/spark-submit
     INFO ADAMMain: ADAM invoked with args:
     
-    
-         e            888~-_              e                 e    e
-        d8b           888   \            d8b               d8b  d8b
-       /Y88b          888    |          /Y88b             d888bdY88b
-      /  Y88b         888    |         /  Y88b           / Y88Y Y888b
-     /____Y88b        888   /         /____Y88b         /   YY   Y888b
-    /      Y88b       888_-~         /      Y88b       /          Y888b
+           e         888~-_          e             e    e
+          d8b        888   \        d8b           d8b  d8b
+         /Y88b       888    |      /Y88b         d888bdY88b
+        /  Y88b      888    |     /  Y88b       / Y88Y Y888b
+       /____Y88b     888   /     /____Y88b     /   YY   Y888b
+      /      Y88b    888_-~     /      Y88b   /          Y888b
     
     Usage: adam-submit [<spark-args> --] <adam-args>
     
     Choose one of the following commands:
     
     ADAM ACTIONS
-                   depth : Calculate the depth from a given ADAM file, at each variant in a VCF
-             count_kmers : Counts the k-mers/q-mers from a read dataset.
-      count_contig_kmers : Counts the k-mers/q-mers from a read dataset.
-               transform : Convert SAM/BAM to ADAM format and optionally perform read pre-processing transformations
-              adam2fastq : Convert BAM to FASTQ files
-                  plugin : Executes an ADAMPlugin
-                 flatten : Convert a ADAM format file to a version with a flattened schema, suitable for querying with tools like Impala
+                 depth : Calculate the depth from a given ADAM file, at each variant in a VCF
+           count_kmers : Counts the k-mers/q-mers from a read dataset.
+    count_contig_kmers : Counts the k-mers/q-mers from a read dataset.
+             transform : Convert SAM/BAM to ADAM format and optionally perform read pre-processing transformations
+            adam2fastq : Convert BAM to FASTQ files
+                plugin : Executes an ADAMPlugin
+               flatten : Convert a ADAM format file to a version with a flattened schema, suitable for querying with tools like Impala
     
     CONVERSION OPERATIONS
-                vcf2adam : Convert a VCF file to the corresponding ADAM format
-               anno2adam : Convert a annotation file (in VCF format) to the corresponding ADAM format
-                adam2vcf : Convert an ADAM variant to the VCF ADAM format
-              fasta2adam : Converts a text FASTA sequence file into an ADAMNucleotideContig Parquet file which represents assembled sequences.
-           features2adam : Convert a file with sequence features into corresponding ADAM format
-              wigfix2bed : Locally convert a wigFix file to BED format
+              vcf2adam : Convert a VCF file to the corresponding ADAM format
+             anno2adam : Convert a annotation file (in VCF format) to the corresponding ADAM format
+              adam2vcf : Convert an ADAM variant to the VCF ADAM format
+            fasta2adam : Converts a text FASTA sequence file into an ADAMNucleotideContig Parquet file which represents assembled sequences.
+            adam2fasta : Convert ADAM nucleotide contig fragments to FASTA files
+         features2adam : Convert a file with sequence features into corresponding ADAM format
+            wigfix2bed : Locally convert a wigFix file to BED format
+       fragments2reads : Convert alignment records into fragment records.
+       reads2fragments : Convert alignment records into fragment records.
     
     PRINT
-                   print : Print an ADAM formatted file
-             print_genes : Load a GTF file containing gene annotations and print the corresponding gene models
-                flagstat : Print statistics on reads in an ADAM file (similar to samtools flagstat)
-              print_tags : Prints the values and counts of all tags in a set of records
-                listdict : Print the contents of an ADAM sequence dictionary
-             allelecount : Calculate Allele frequencies
-               buildinfo : Display build information (use this for bug reports)
-                    view : View certain reads from an alignment-record file.
+                 print : Print an ADAM formatted file
+           print_genes : Load a GTF file containing gene annotations and print the corresponding gene models
+              flagstat : Print statistics on reads in an ADAM file (similar to samtools flagstat)
+            print_tags : Prints the values and counts of all tags in a set of records
+              listdict : Print the contents of an ADAM sequence dictionary
+           allelecount : Calculate Allele frequencies
+                  view : View certain reads from an alignment-record file.
     
     EXTERNAL COMMANDS
         count_alignments : Counts the alignments in a read dataset.
