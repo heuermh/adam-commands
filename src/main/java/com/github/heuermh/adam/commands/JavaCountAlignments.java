@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 held jointly by the individual authors.
+ * Copyright 2015-2017 held jointly by the individual authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,7 +33,6 @@ import org.apache.spark.api.java.function.VoidFunction;
 import org.bdgenomics.adam.apis.java.JavaADAMContext;
 
 import org.bdgenomics.adam.rdd.ADAMContext;
-import org.bdgenomics.adam.rdd.GenomicRDD;
 
 import org.bdgenomics.adam.rdd.read.AlignmentRecordRDD;
 
@@ -93,7 +92,7 @@ public final class JavaCountAlignments implements Runnable, Serializable {
         ADAMContext ac = new ADAMContext(sc);
         JavaADAMContext javaAdamContext = new JavaADAMContext(ac);
         AlignmentRecordRDD alignments = javaAdamContext.loadAlignments(inputPath);
-        JavaRDD<AlignmentRecord> rdd = ((GenomicRDD) alignments).jrdd();
+        JavaRDD<AlignmentRecord> rdd = alignments.jrdd();
 
         JavaRDD<String> contigNames = rdd.map(new Function<AlignmentRecord, String>() {
                 @Override
