@@ -4,7 +4,7 @@ adam-commands
 External commands in Java and Scala for ADAM: Genomic Data System.  Apache 2 licensed.
 
 
-###Hacking adam-commands
+### Hacking adam-commands
 
 Install
 
@@ -20,7 +20,7 @@ To build
     $ mvn install
 
 
-###Running adam-commands using ```adam-submit```
+### Running adam-commands using ```adam-submit```
 
     $ cp target/adam-commands_2.10-0.21.1-SNAPSHOT.jar $ADAM_DIR
     $ cd $ADAM_DIR
