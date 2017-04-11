@@ -8,7 +8,7 @@
   </parent>
   <groupId>com.github.heuermh.adamcommands</groupId>
   <artifactId>adam-commands_2.10</artifactId>
-  <version>0.22.0</version>
+  <version>0.23.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>adam-commands_2.10</name>
@@ -19,7 +19,7 @@
     <connection>scm:git:https://github.com/heuermh/adam-commands</connection>
     <developerConnection>scm:git:https://github.com/heuermh/adam-commands</developerConnection>
     <url>https://github.com/heuermh/adam-commands.git</url>
-    <tag>adam-commands_2.10-0.22.0</tag>
+    <tag>HEAD</tag>
   </scm>
   <licenses>
     <license>
@@ -258,22 +258,22 @@
       <dependency>
         <groupId>org.bdgenomics.adam</groupId>
         <artifactId>adam-apis-spark2_${scala.artifact.suffix}</artifactId>
-        <version>0.22.0</version>
+        <version>0.23.0-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.bdgenomics.adam</groupId>
         <artifactId>adam-cli-spark2_${scala.artifact.suffix}</artifactId>
-        <version>0.22.0</version>
+        <version>0.23.0-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.bdgenomics.adam</groupId>
         <artifactId>adam-core-spark2_${scala.artifact.suffix}</artifactId>
-        <version>0.22.0</version>
+        <version>0.23.0-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.bdgenomics.adam</groupId>
         <artifactId>adam-core-spark2_${scala.artifact.suffix}</artifactId>
-        <version>0.22.0</version>
+        <version>0.23.0-SNAPSHOT</version>
         <type>test-jar</type>
       </dependency>
       <dependency>
