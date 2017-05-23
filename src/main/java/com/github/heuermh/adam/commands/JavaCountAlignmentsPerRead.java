@@ -48,27 +48,27 @@ import scala.Option;
 import scala.Tuple2;
 
 /**
- * Count alignments Java ADAM command.
+ * Count alignments per read Java ADAM command.
  *
  * @author  Michael Heuer
  */
-public final class JavaCountAlignments implements Runnable, Serializable {
+public final class JavaCountAlignmentsPerRead implements Runnable, Serializable {
     private final String inputPath;
-    private final Logger logger = LoggerFactory.getLogger(JavaCountAlignments.class);
+    private final Logger logger = LoggerFactory.getLogger(JavaCountAlignmentsPerRead.class);
 
     /**
-     * Create a new count alignments runnable.
+     * Create a new count alignments per read runnable.
      *
      * @param inputPath input path
      */
-    public JavaCountAlignments(final String inputPath) {
+    public JavaCountAlignmentsPerRead(final String inputPath) {
         this.inputPath = inputPath;
     }
 
     @Override
     public void run() {
         long start = System.nanoTime();
-        SparkConf conf = new SparkConf().setAppName("adam: " + "java_count_alignments");
+        SparkConf conf = new SparkConf().setAppName("adam: " + "java_count_alignments_per_read");
         if (conf.getOption("spark.master").isEmpty()) {
             conf.setMaster(String.format("local[%d]", Runtime.getRuntime().availableProcessors()));
         }
@@ -90,21 +90,21 @@ public final class JavaCountAlignments implements Runnable, Serializable {
 
     private void run(final SparkContext sc) {
         ADAMContext ac = new ADAMContext(sc);
-        JavaADAMContext javaAdamContext = new JavaADAMContext(ac);
-        AlignmentRecordRDD alignments = javaAdamContext.loadAlignments(inputPath);
+        JavaADAMContext jac = new JavaADAMContext(ac);
+        AlignmentRecordRDD alignments = jac.loadAlignments(inputPath);
         JavaRDD<AlignmentRecord> jrdd = alignments.jrdd();
 
         JavaRDD<String> contigNames = jrdd.map(new Function<AlignmentRecord, String>() {
                 @Override
                 public String call(final AlignmentRecord rec) {
-                    return rec.getReadMapped() ? rec.getContigName() : "unmapped";
+                    return rec.getReadMapped() ? rec.getReadName() : "unmapped";
                 }
             });
 
         JavaPairRDD<String, Integer> counts = contigNames.mapToPair(new PairFunction<String, String, Integer>() {
                 @Override
-                public Tuple2<String, Integer> call(final String contigName) {
-                    return new Tuple2<String, Integer>(contigName, Integer.valueOf(1));
+                public Tuple2<String, Integer> call(final String readName) {
+                    return new Tuple2<String, Integer>(readName, Integer.valueOf(1));
                 }
             });
 
@@ -117,8 +117,8 @@ public final class JavaCountAlignments implements Runnable, Serializable {
 
         reducedCounts.foreach(new VoidFunction<Tuple2<String, Integer>>() {
                 @Override
-                public void call(final Tuple2<String, Integer> value) {
-                    System.out.println(value.toString());
+                public void call(final Tuple2<String, Integer> count) {
+                    System.out.println(count.toString());
                 }
             });
     }
@@ -129,6 +129,6 @@ public final class JavaCountAlignments implements Runnable, Serializable {
      * @param args command line arguments
      */
     public static void main(final String[] args) {
-        new JavaCountAlignments(args[0]).run();
+        new JavaCountAlignmentsPerRead(args[0]).run();
     }
 }
