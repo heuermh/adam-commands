@@ -9,10 +9,10 @@ External commands in Java and Scala for ADAM: Genomic Data System.  Apache 2 lic
 Install
 
  * JDK 1.8 or later, http://openjdk.java.net
- * Scala 2.10.6 or later, http://www.scala-lang.org
+ * Scala 2.11.8 or later, http://www.scala-lang.org
  * Apache Maven 3.3.1 or later, http://maven.apache.org
- * Apache Spark 2.1.0 or later, http://spark.apache.org
- * ADAM: Genomic Data System 0.22.0 or later, https://github.com/bigdatagenomics/adam
+ * Apache Spark 2.2.0 or later, http://spark.apache.org
+ * ADAM: Genomic Data System 0.23.0-SNAPSHOT or later, https://github.com/bigdatagenomics/adam
 
 
 To build
@@ -22,7 +22,7 @@ To build
 
 ### Running adam-commands using ```adam-submit```
 
-    $ cp target/adam-commands_2.10-0.23.0-SNAPSHOT.jar $ADAM_DIR
+    $ cp target/adam-commands_2.11-0.23.0-SNAPSHOT.jar $ADAM_DIR
     $ cd $ADAM_DIR
 
 To run the external commands in this repository via the ADAM command line, specify ```ADAM_MAIN``` and add the adam-commands jar
@@ -34,48 +34,29 @@ External commands are now listed in the usage text.
 
     $ ADAM_MAIN=com.github.heuermh.adam.commands.ADAMCommandsMain \
       ./bin/adam-submit \
-      --jars adam-commands_2.10-0.23.0-SNAPSHOT.jar \
+      --jars adam-commands_2.11-0.23.0-SNAPSHOT.jar \
       --
     
     Using ADAM_MAIN=com.github.heuermh.adam.commands.ADAMCommandsMain
     Using SPARK_SUBMIT=/usr/local/bin/spark-submit
     INFO ADAMMain: ADAM invoked with args:
     
-           e         888~-_          e             e    e
-          d8b        888   \        d8b           d8b  d8b
-         /Y88b       888    |      /Y88b         d888bdY88b
-        /  Y88b      888    |     /  Y88b       / Y88Y Y888b
-       /____Y88b     888   /     /____Y88b     /   YY   Y888b
-      /      Y88b    888_-~     /      Y88b   /          Y888b
+           e        888~-_         e            e    e
+          d8b       888   \       d8b          d8b  d8b
+         /Y88b      888    |     /Y88b        d888bdY88b
+        /  Y88b     888    |    /  Y88b      / Y88Y Y888b
+       /____Y88b    888   /    /____Y88b    /   YY   Y888b
+      /      Y88b   888_-~    /      Y88b  /          Y888b
     
     Usage: adam-submit [<spark-args> --] <adam-args>
     
     Choose one of the following commands:
 
     ADAM ACTIONS
-            countKmers : Counts the k-mers/q-mers from a read dataset.
-      countContigKmers : Counts the k-mers/q-mers from a read dataset.
-             transform : Convert SAM/BAM to ADAM format and optionally perform read pre-processing transformations
-     transformFeatures : Convert a file with sequence features into corresponding ADAM format and vice versa
-           mergeShards : Merges the shards of a file
-        reads2coverage : Calculate the coverage from a given ADAM file
-    
-    CONVERSION OPERATIONS
-              vcf2adam : Convert a VCF file to the corresponding ADAM format
-              adam2vcf : Convert an ADAM variant to the VCF ADAM format
-            fasta2adam : Converts a text FASTA sequence file into an ADAMNucleotideContig Parquet file which represents assembled sequences.
-            adam2fasta : Convert ADAM nucleotide contig fragments to FASTA files
-            adam2fastq : Convert BAM to FASTQ files
-       fragments2reads : Convert alignment records into fragment records.
-       reads2fragments : Convert alignment records into fragment records.
-    
-    PRINT
-                 print : Print an ADAM formatted file
-              flagstat : Print statistics on reads in an ADAM file (similar to samtools flagstat)
-                  view : View certain reads from an alignment-record file.
+    ...
     
     EXTERNAL COMMANDS
-      count_alignments : Counts the alignments in a read dataset.
+             count_alignments : Counts the alignments in a read dataset.
     count_alignments_per_read : Counts the alignments per read in a read dataset.
 
 
@@ -83,7 +64,7 @@ Run external commands
 
     $ ADAM_MAIN=com.github.heuermh.adam.commands.ADAMCommandsMain \
       ./bin/adam-submit \
-      --jars adam-commands_2.10-0.23.0-SNAPSHOT.jar \
+      --jars adam-commands_2.11-0.23.0-SNAPSHOT.jar \
       -- \
       count_alignments adam-core/src/test/resources/small.sam
     
@@ -96,7 +77,7 @@ Run external commands
 
     $ ADAM_MAIN=com.github.heuermh.adam.commands.ADAMCommandsMain \
       ./bin/adam-submit \
-      --jars adam-commands_2.10-0.23.0-SNAPSHOT.jar \
+      --jars adam-commands_2.11-0.23.0-SNAPSHOT.jar \
       -- \
       count_alignments_per_read adam-core/src/test/resources/small.sam
     
