@@ -34,7 +34,7 @@ object CountAlignments extends BDGCommandCompanion {
   }
 }
 
-class CountAlignmentsArgs extends Args4jBase with ParquetArgs {
+class CountAlignmentsArgs extends Args4jBase {
   @Argument(required = true, metaVar = "INPUT", usage = "The ADAM, BAM or SAM file to count alignments from", index = 0)
   var inputPath: String = null
 }

@@ -30,7 +30,7 @@ import org.apache.spark.api.java.function.Function2;
 import org.apache.spark.api.java.function.PairFunction;
 import org.apache.spark.api.java.function.VoidFunction;
 
-import org.bdgenomics.adam.apis.java.JavaADAMContext;
+import org.bdgenomics.adam.api.java.JavaADAMContext;
 
 import org.bdgenomics.adam.rdd.ADAMContext;
 

@@ -34,7 +34,7 @@ object CountAlignmentsPerRead extends BDGCommandCompanion {
   }
 }
 
-class CountAlignmentsPerReadArgs extends Args4jBase with ParquetArgs {
+class CountAlignmentsPerReadArgs extends Args4jBase {
   @Argument(required = true, metaVar = "INPUT", usage = "The ADAM, BAM or SAM file to count alignments per read from", index = 0)
   var inputPath: String = null
 }
