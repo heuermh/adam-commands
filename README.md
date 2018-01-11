@@ -9,10 +9,10 @@ External commands in Java and Scala for ADAM: Genomic Data System.  Apache 2 lic
 Install
 
  * JDK 1.8 or later, http://openjdk.java.net
- * Scala 2.11.8 or later, http://www.scala-lang.org
+ * Scala 2.11.12 or later, http://www.scala-lang.org
  * Apache Maven 3.3.1 or later, http://maven.apache.org
- * Apache Spark 2.2.0 or later, http://spark.apache.org
- * ADAM: Genomic Data System 0.23.0-SNAPSHOT or later, https://github.com/bigdatagenomics/adam
+ * Apache Spark 2.2.1 or later, http://spark.apache.org
+ * ADAM: Genomic Data System 0.24.0-SNAPSHOT or later, https://github.com/bigdatagenomics/adam
 
 
 To build
@@ -22,7 +22,7 @@ To build
 
 ### Running adam-commands using ```adam-submit```
 
-    $ cp target/adam-commands_2.11-0.23.0-SNAPSHOT.jar $ADAM_DIR
+    $ cp target/adam-commands_2.11-0.24.0-SNAPSHOT.jar $ADAM_DIR
     $ cd $ADAM_DIR
 
 To run the external commands in this repository via the ADAM command line, specify ```ADAM_MAIN``` and add the adam-commands jar
@@ -34,7 +34,7 @@ External commands are now listed in the usage text.
 
     $ ADAM_MAIN=com.github.heuermh.adam.commands.ADAMCommandsMain \
       ./bin/adam-submit \
-      --jars adam-commands_2.11-0.23.0-SNAPSHOT.jar \
+      --jars adam-commands_2.11-0.24.0-SNAPSHOT.jar \
       --
     
     Using ADAM_MAIN=com.github.heuermh.adam.commands.ADAMCommandsMain
@@ -64,7 +64,7 @@ Run external commands
 
     $ ADAM_MAIN=com.github.heuermh.adam.commands.ADAMCommandsMain \
       ./bin/adam-submit \
-      --jars adam-commands_2.11-0.23.0-SNAPSHOT.jar \
+      --jars adam-commands_2.11-0.24.0-SNAPSHOT.jar \
       -- \
       count_alignments adam-core/src/test/resources/small.sam
     
@@ -77,7 +77,7 @@ Run external commands
 
     $ ADAM_MAIN=com.github.heuermh.adam.commands.ADAMCommandsMain \
       ./bin/adam-submit \
-      --jars adam-commands_2.11-0.23.0-SNAPSHOT.jar \
+      --jars adam-commands_2.11-0.24.0-SNAPSHOT.jar \
       -- \
       count_alignments_per_read adam-core/src/test/resources/small.sam
     
