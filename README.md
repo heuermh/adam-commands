@@ -1,7 +1,7 @@
 adam-commands
 =============
 
-[![Maven Central](https://img.shields.io/maven-central/v/com.github.heuermh.commands/adam-commands_2.11.svg?maxAge=600)](http://search.maven.org/#search%7Cga%7C1%7Ccom.github.heuermh.adamcommands)
+[![Maven Central](https://img.shields.io/maven-central/v/com.github.heuermh.adamcommands/adam-commands_2.11.svg?maxAge=600)](http://search.maven.org/#search%7Cga%7C1%7Ccom.github.heuermh.adamcommands)
 
 External commands in Java and Scala for ADAM: Genomic Data System.  Apache 2 licensed.
 
