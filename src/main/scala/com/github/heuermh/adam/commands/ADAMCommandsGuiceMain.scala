@@ -29,7 +29,7 @@ import org.bdgenomics.adam.cli.ADAMMain.defaultCommandGroups
 object ADAMCommandsGuiceMain {
   def main(args: Array[String]) {
     val module = new AbstractModule with ScalaModule {
-      def configure() = {
+      override def configure() = {
         bind[List[CommandGroup]].toInstance(defaultCommandGroups.union(List(CommandGroup("EXTERNAL COMMANDS", List(CountAlignments, CountAlignmentsPerRead)))))
       }
     }
