@@ -34,7 +34,7 @@ import org.bdgenomics.adam.api.java.JavaADAMContext;
 
 import org.bdgenomics.adam.rdd.ADAMContext;
 
-import org.bdgenomics.adam.rdd.read.AlignmentRecordRDD;
+import org.bdgenomics.adam.rdd.read.AlignmentRecordDataset;
 
 import org.bdgenomics.formats.avro.AlignmentRecord;
 
@@ -91,7 +91,7 @@ public final class JavaCountAlignmentsPerRead implements Runnable, Serializable 
     private void run(final SparkContext sc) {
         ADAMContext ac = new ADAMContext(sc);
         JavaADAMContext jac = new JavaADAMContext(ac);
-        AlignmentRecordRDD alignments = jac.loadAlignments(inputPath);
+        AlignmentRecordDataset alignments = jac.loadAlignments(inputPath);
         JavaRDD<AlignmentRecord> jrdd = alignments.jrdd();
 
         JavaRDD<String> contigNames = jrdd.map(new Function<AlignmentRecord, String>() {
