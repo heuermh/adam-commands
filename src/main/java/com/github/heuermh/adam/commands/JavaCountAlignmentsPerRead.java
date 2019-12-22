@@ -1,5 +1,5 @@
 /**
- * Copyright 2015-2017 held jointly by the individual authors.
+ * Copyright 2015-2020 held jointly by the individual authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,8 +38,6 @@ import org.bdgenomics.adam.rdd.read.AlignmentDataset;
 
 import org.bdgenomics.formats.avro.Alignment;
 
-import org.bdgenomics.utils.instrumentation.DurationFormatting;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -73,7 +71,6 @@ public final class JavaCountAlignmentsPerRead implements Runnable, Serializable 
             conf.setMaster(String.format("local[%d]", Runtime.getRuntime().availableProcessors()));
         }
         SparkContext sc = new SparkContext(conf);
-        //metricsListener = initializeMetrics(sc);
         try {
             run(sc);
         }
@@ -83,8 +80,7 @@ public final class JavaCountAlignmentsPerRead implements Runnable, Serializable 
         }
         finally {
             long totalTime = System.nanoTime() - start;
-            logger.warn("Overall Duration: " + DurationFormatting.formatNanosecondDuration(totalTime));
-            //printMetrics(totalTime, metricsListener);
+            logger.warn("Overall Duration: " + totalTime + "ns");
         }
     }
 
