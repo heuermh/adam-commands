@@ -34,9 +34,9 @@ import org.bdgenomics.adam.api.java.JavaADAMContext;
 
 import org.bdgenomics.adam.rdd.ADAMContext;
 
-import org.bdgenomics.adam.rdd.read.AlignmentRecordDataset;
+import org.bdgenomics.adam.rdd.read.AlignmentDataset;
 
-import org.bdgenomics.formats.avro.AlignmentRecord;
+import org.bdgenomics.formats.avro.Alignment;
 
 import org.bdgenomics.utils.instrumentation.DurationFormatting;
 
@@ -91,12 +91,12 @@ public final class JavaCountAlignments implements Runnable, Serializable {
     private void run(final SparkContext sc) {
         ADAMContext ac = new ADAMContext(sc);
         JavaADAMContext javaAdamContext = new JavaADAMContext(ac);
-        AlignmentRecordDataset alignments = javaAdamContext.loadAlignments(inputPath);
-        JavaRDD<AlignmentRecord> jrdd = alignments.jrdd();
+        AlignmentDataset alignments = javaAdamContext.loadAlignments(inputPath);
+        JavaRDD<Alignment> jrdd = alignments.jrdd();
 
-        JavaRDD<String> contigNames = jrdd.map(new Function<AlignmentRecord, String>() {
+        JavaRDD<String> contigNames = jrdd.map(new Function<Alignment, String>() {
                 @Override
-                public String call(final AlignmentRecord rec) {
+                public String call(final Alignment rec) {
                     return rec.getReadMapped() ? rec.getReferenceName() : "unmapped";
                 }
             });

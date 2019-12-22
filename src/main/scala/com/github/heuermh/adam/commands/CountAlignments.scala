@@ -20,8 +20,8 @@ import org.apache.spark.SparkContext
 import org.apache.spark.SparkContext._
 import org.apache.spark.rdd.RDD
 import org.bdgenomics.adam.rdd.ADAMContext._
-import org.bdgenomics.adam.rdd.read.AlignmentRecordDataset
-import org.bdgenomics.formats.avro.AlignmentRecord
+import org.bdgenomics.adam.rdd.read.AlignmentDataset
+import org.bdgenomics.formats.avro.Alignment
 import org.bdgenomics.utils.cli._
 import org.kohsuke.args4j.Argument
 
@@ -48,8 +48,8 @@ class CountAlignments(protected val args: CountAlignmentsArgs) extends BDGSparkC
   val companion = CountAlignments
 
   def run(sc: SparkContext) {
-    var alignments: AlignmentRecordDataset = sc.loadAlignments(args.inputPath)
-    var rdd: RDD[AlignmentRecord] = alignments.rdd
+    var alignments: AlignmentDataset = sc.loadAlignments(args.inputPath)
+    var rdd: RDD[Alignment] = alignments.rdd
 
     rdd.map(rec => if (rec.getReadMapped) rec.getReferenceName else "unmapped")
       .map(referenceName => (referenceName, 1))
