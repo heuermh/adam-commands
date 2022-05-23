@@ -8,7 +8,7 @@
   </parent>
   <groupId>com.github.heuermh.adamcommands</groupId>
   <artifactId>adam-commands_2.12</artifactId>
-  <version>0.38.0-SNAPSHOT</version>
+  <version>1.0</version>
   <packaging>jar</packaging>
 
   <name>adam-commands_2.12</name>
@@ -19,7 +19,7 @@
     <connection>scm:git:https://github.com/heuermh/adam-commands</connection>
     <developerConnection>scm:git:https://github.com/heuermh/adam-commands</developerConnection>
     <url>https://github.com/heuermh/adam-commands.git</url>
-    <tag>HEAD</tag>
+    <tag>adam-commands_2.12-1.0</tag>
   </scm>
   <licenses>
     <license>
